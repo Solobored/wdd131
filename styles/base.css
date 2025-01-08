@@ -1,4 +1,3 @@
-/* Reset default styles */
 * {
   margin: 0;
   padding: 0;
@@ -88,25 +87,22 @@ main {
   padding: 1.5rem;
 }
 
-/* Add this to your existing CSS */
 .card-content p {
-  margin-bottom: 2rem; /* Adds space between paragraphs */
-  line-height: 1.8; /* Increases line height for better readability */
+  margin-bottom: 2rem;
+  line-height: 1.8;
 }
 
-/* Add more space after the last paragraph if needed */
 .card-content p:last-child {
-  margin-bottom: 0; /* Removes margin from the last paragraph to avoid extra space */
+  margin-bottom: 0; 
 }
 
-/* Specific spacing for the About Me section */
 .location {
-  margin-top: 2.5rem; /* Increases space before the location section */
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 
-/* If you want to adjust spacing around headings */
 .card h2 + .card-content {
-  margin-top: 1rem; /* Adds space after the heading */
+  margin-top: 1rem;
 }
 
 /* About Me section */
@@ -118,14 +114,10 @@ main {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.location {
-  margin-top: 2rem;
-}
-
 .flag-image {
   float: left;
   max-width: 120px;
-  margin: 0 1rem 1rem 0;
+  margin: 0 1rem 0.5rem 0;
   border: 1px solid #ddd;
   border-radius: 0px;
 }
@@ -135,7 +127,6 @@ main {
   font-style: italic;
   font-size: 0.9rem;
   color: #666;
-  margin-bottom: 1rem;
 }
 
 /* Web Dev Resources section */
