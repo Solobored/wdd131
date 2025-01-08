@@ -1,11 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WDD 131</title>
+  <title>WDD 131 - Dynamic Web Fundamentals - Josue Neiculeo</title>
+  <meta name="description"
+    content="WDD 131 - Dynamic Web Fundamentals. Learn about HTML, CSS, JavaScript, and responsive web design.">
+  <meta name="author" content="Josue Neiculeo">
+  <link rel="stylesheet" href="styles/base.css">
+  <script src="scripts/getdates.js" defer></script>
 </head>
+
 <body>
-  <h1>WDD 131</h1>
+  <header>
+    <h1>WDD 131: Dynamic Web Fundamentals</h1>
+    <nav>
+      <ul>
+        <li><a href="https://www.linkedin.com/" target="_blank">LinkedIn</a></li>
+        <li><a href="https://byupw.instructure.com/" target="_blank">Canvas</a></li>
+        <li><a href="https://www.churchofjesuschrist.org/study/scriptures" target="_blank">Scripture</a></li>
+        <li><a href="#" target="_blank">Final Project</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="card about-me">
+      <h2>About Me</h2>
+      <div class="card-content">
+        <img src="images/Josue.jpg" alt="Profile Picture" class="profile-image">
+        <p>My name is Josue Neiculeo, and I am excited to learn web development. I live in Santiago, Chile, where I am
+          working towards becoming a skilled software developer. I enjoy creating functional and responsive websites and
+          exploring new technologies.</p>
+
+        <h3>Santiago, Chile</h3>
+        <img src="images/Flag_of_Chile.png" alt="Flag of Chile" class="flag-image">
+        <p class="flag-caption">Official Flag of Chile</p>
+        <p>Santiago is the capital of Chile, a vibrant city nestled between the Andes Mountains and the Pacific Ocean.
+          It is known for its rich history, cultural landmarks, and breathtaking views. Visitors enjoy its parks,
+          museums, and the nearby Maipo Valley, famous for its wines.</p>
+      </div>
+    </section>
+    <section class="card resources">
+      <h2>Web Dev Resources</h2>
+      <div class="card-content">
+        <ul class="resources-list">
+          <li><a href="#">Dev.to Community</a></li>
+          <li><a href="#">Smashing Magazine</a></li>
+          <li><a href="#">CSS Tricks</a></li>
+          <li><a href="#">W3 Schools</a></li>
+          <li><a href="#">Udemy</a></li>
+          <li><a href="#">Image Placeholder</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; <span id="currentyear"></span> Josue Neiculeo | Santiago, Chile</p>
+    <p id="lastModified"></p>
+  </footer>
 </body>
+
 </html>
