@@ -60,7 +60,7 @@ nav a:hover {
 main {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 2fr 1fr;
   gap: 2rem;
   padding: 2rem;
   max-width: 1200px;
@@ -88,13 +88,38 @@ main {
   padding: 1.5rem;
 }
 
+/* Add this to your existing CSS */
+.card-content p {
+  margin-bottom: 2rem; /* Adds space between paragraphs */
+  line-height: 1.8; /* Increases line height for better readability */
+}
+
+/* Add more space after the last paragraph if needed */
+.card-content p:last-child {
+  margin-bottom: 0; /* Removes margin from the last paragraph to avoid extra space */
+}
+
+/* Specific spacing for the About Me section */
+.location {
+  margin-top: 2.5rem; /* Increases space before the location section */
+}
+
+/* If you want to adjust spacing around headings */
+.card h2 + .card-content {
+  margin-top: 1rem; /* Adds space after the heading */
+}
+
 /* About Me section */
 .profile-image {
   float: right;
   max-width: 150px;
   margin: 0 0 1rem 1rem;
-  border-radius: 50%;
+  border-radius: 10%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.location {
+  margin-top: 2rem;
 }
 
 .flag-image {
@@ -102,7 +127,7 @@ main {
   max-width: 120px;
   margin: 0 1rem 1rem 0;
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 .flag-caption {
@@ -114,6 +139,7 @@ main {
 }
 
 /* Web Dev Resources section */
+
 .resources-list {
   list-style: none;
   padding: 0;
@@ -150,6 +176,10 @@ footer p {
 
 /* Responsive design */
 @media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
   header h1 {
     font-size: 2rem;
   }
