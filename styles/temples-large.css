@@ -1,30 +1,30 @@
-/* Large Screen Styles */
-#hamburgerBtn {
-  display: none;
-}
+@media (min-width: 768px) {
+  /* Only include styles that CHANGE for larger screens */
+  #hamburgerBtn {
+      display: none;
+  }
 
-#primaryNav {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
+  #primaryNav {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-md);
+  }
 
-#primaryNav li a {
-  border: none;
-  padding: 0.5rem 1rem;
-}
+  #primaryNav li a {
+      border: none;
+      padding: var(--spacing-sm) var(--spacing-md);
+  }
 
-/* Temple Grid Large Screen Layout */
-.temple-grid {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
+  .temple-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 
-/* Enhance hover effects */
-figure {
-  transition: transform 0.3s ease;
-}
+  figure {
+      transition: transform 0.3s ease;
+  }
 
-figure:hover {
-  transform: translateY(-5px);
+  figure:hover {
+      transform: translateY(-5px);
+  }
 }
 
