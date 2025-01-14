@@ -1,5 +1,4 @@
 @media (min-width: 768px) {
-  /* Only include styles that CHANGE for larger screens */
   #hamburgerBtn {
       display: none;
   }
