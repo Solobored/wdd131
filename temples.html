@@ -1,34 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="A collection of beautiful temple photographs showcasing various temples around the world">
-        <meta name="author" content="Josue Neiculeo">
-        <title>Temple Album - A Collection of Holy Houses</title>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="styles/temples.css">
-        <link rel="stylesheet" href="styles/temples-large.css" media="(min-width: 768px)">
-        <script src="scripts/temples.js" defer></script>
-    </head>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore our curated collection of temple photographs from around the world, featuring architectural beauty and spiritual significance">
+    <meta name="author" content="Josue Neiculeo">
+    <meta name="theme-color" content="#2d4a7c">
+    <title>Temple Album - Sacred Holy Houses</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/temples.css">
+    <link rel="stylesheet" href="styles/temples-large.css" media="(min-width: 768px)">
+    <script src="scripts/temples.js" defer></script>
+</head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
-        <h1>Temple Gallery</h1>
-        <nav>
-            <button id="hamburgerBtn" aria-label="Menu">☰</button>
-            <ul id="primaryNav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#old">Old</a></li>
-                <li><a href="#new">New</a></li>
-                <li><a href="#large">Large</a></li>
-                <li><a href="#small">Small</a></li>
+        <h1>Sacred Temple Collection</h1>
+        <nav aria-label="Main navigation">
+            <button id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="primaryNav">
+                <span class="hamburger-icon">☰</span>
+            </button>
+            <ul id="primaryNav" role="list">
+                <li><a href="index.html" aria-current="page">Home</a></li>
+                <li><a href="#old">Old Temples</a></li>
+                <li><a href="#new">New Temples</a></li>
+                <li><a href="#large">Large Temples</a></li>
+                <li><a href="#small">Small Temples</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <h2>Featured Temples</h2>
-        <div class="temple-grid">
+    <main id="main-content">
+        <h2>Featured Temple Collection</h2>
+        <div class="temple-grid" role="group" aria-label="Temple gallery">
             <figure>
                 <img src="images/Antofagasta.jpg" alt="Antofagasta Temple">
                 <figcaption>Antofagasta Temple</figcaption>
@@ -69,7 +75,7 @@
     </main>
 
     <footer>
-        <p>&copy; <span id="currentYear"></span> | Temple Gallery | All Rights Reserved</p>
+        <p>&copy; <span id="currentYear"></span> Temple Album | All Rights Reserved</p>
         <p>Last Modified: <span id="lastModified"></span></p>
     </footer>
 </body>

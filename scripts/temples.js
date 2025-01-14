@@ -1,23 +1,42 @@
 // Update copyright year
 document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-// Update last modified date
-document.getElementById('lastModified').textContent = document.lastModified;
+// Update last modified date with formatted date string
+const lastModified = new Date(document.lastModified);
+const options = { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+};
+document.getElementById('lastModified').textContent = lastModified.toLocaleDateString('en-US', options);
 
 // Hamburger menu functionality
-document.getElementById('hamburgerBtn').addEventListener('click', function() {
-    document.getElementById('primaryNav').classList.toggle('open');
-    const isOpen = document.getElementById('primaryNav').classList.contains('open');
-    this.textContent = isOpen ? '✕' : '☰';
-});
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const primaryNav = document.getElementById('primaryNav');
+
+function toggleMenu() {
+    const isOpen = primaryNav.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded', isOpen);
+    hamburgerBtn.querySelector('.hamburger-icon').textContent = isOpen ? '✕' : '☰';
+}
+
+hamburgerBtn.addEventListener('click', toggleMenu);
 
 // Close menu when clicking outside
-document.addEventListener('click', function(event) {
-    const nav = document.getElementById('primaryNav');
-    const btn = document.getElementById('hamburgerBtn');
-    if (!nav.contains(event.target) && !btn.contains(event.target) && nav.classList.contains('open')) {
-        nav.classList.remove('open');
-        btn.textContent = '☰';
+document.addEventListener('click', (event) => {
+    if (!hamburgerBtn.contains(event.target) && 
+        !primaryNav.contains(event.target) && 
+        primaryNav.classList.contains('open')) {
+        toggleMenu();
+    }
+});
+
+// Close menu when pressing Escape key
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && primaryNav.classList.contains('open')) {
+        toggleMenu();
     }
 });
 
