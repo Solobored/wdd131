@@ -1,0 +1,30 @@
+/* Large Screen Styles */
+#hamburgerBtn {
+  display: none;
+}
+
+#primaryNav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#primaryNav li a {
+  border: none;
+  padding: 0.5rem 1rem;
+}
+
+/* Temple Grid Large Screen Layout */
+.temple-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Enhance hover effects */
+figure {
+  transition: transform 0.3s ease;
+}
+
+figure:hover {
+  transform: translateY(-5px);
+}
+
