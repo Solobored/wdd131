@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Argentina</title>
+  <link rel="stylesheet" href="styles/place.css">
+</head>
+
+<body>
+  <header>
+    <h1>✨ Argentina ✨</h1>
+  </header>
+
+  <main class="container">
+    <section class="data-section">
+      <h2>🌍 Data</h2>
+      <div class="data-item">
+        <span>Area:</span>
+        <span>2,780,400 sq km</span>
+      </div>
+      <div class="data-item">
+        <span>Population:</span>
+        <span>45,195,774</span>
+      </div>
+      <div class="data-item">
+        <span>Capital:</span>
+        <span>Buenos Aires</span>
+      </div>
+      <div class="data-item">
+        <span>Languages:</span>
+        <span>Spanish</span>
+      </div>
+      <div class="data-item">
+        <span>Currency:</span>
+        <span>Argentine Peso</span>
+      </div>
+      <div class="data-item">
+        <span>Time Zone:</span>
+        <span>UTC-3</span>
+      </div>
+    </section>
+
+    <section class="image-section">
+      <picture>
+        <source srcset="images/carpincho.webp" media="(max-width: 600px)">
+        <source srcset="images/carpincho.webp" media="(min-width: 601px)">
+        <img src="images/carpincho.webp" alt="Capybara drinking mate" class="main-image">
+      </picture>
+    </section>
+
+    <section class="weather-section">
+      <h2>🌤️ Weather</h2>
+      <div class="weather-item">
+        <span>Temperature:</span>
+        <span id="temperature">Loading...</span>
+      </div>
+      <div class="weather-item">
+        <span>Conditions:</span>
+        <span id="conditions">Loading...</span>
+      </div>
+      <div class="weather-item">
+        <span>Wind:</span>
+        <span id="wind">Loading...</span>
+      </div>
+      <div class="weather-item">
+        <span>Humidity:</span>
+        <span id="humidity">Loading...</span>
+      </div>
+      <div class="weather-item">
+        <span>Wind Chill:</span>
+        <span id="windChill">N/A</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>©2024<span class="emoji">🧉</span> ©2024 Josue Neiculeo <span class="emoji">🧉</span>Argentina</p>
+    <p>Last Modified: <span id="lastModified"></span></p>
+  </footer>
+
+  <script src="scripts/place.js"></script>
+</body>
+
+</html>
