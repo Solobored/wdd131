@@ -1,5 +1,6 @@
 :root {
-  --primary-color: #75AADB;
+  --primary-color: #0075bf;
+  --transition-speed: 0.3s;
   --secondary-color: #F0F8FF;
   --accent-color: #FFD700;
   --text-color: #333333;
@@ -63,6 +64,25 @@ h1 {
   box-shadow: var(--shadow);
 }
 
+a:focus,
+button:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.data-item,
+.weather-item {
+  transition: background-color var(--transition-speed) ease;
+}
+
+.data-item:hover,
+.weather-item:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+[aria-live="polite"] {
+  min-height: 1.5em;
+}
 /* Desktop styles */
 @media (min-width: 800px) {
   .image-container {

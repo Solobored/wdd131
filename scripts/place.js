@@ -1,55 +1,36 @@
-// Wind chill calculation
-const calculateWindChill = (tempF, speedMph) => 
-  35.74 + 0.6215 * tempF - 35.75 * Math.pow(speedMph, 0.16) + 0.4275 * tempF * Math.pow(speedMph, 0.16);
-
-// Weather data simulation
 function getWeatherData() {
-  const tempC = 22;
-  const tempF = (tempC * 9/5) + 32;
-  const windKph = 10;
-  const windMph = windKph * 0.621371;
-  
-  let windChillC = 'N/A';
-  
-  // Calculate wind chill only if conditions are met
-  if (tempF <= 50 && windMph > 3) {
-      const windChillF = calculateWindChill(tempF, windMph);
-      windChillC = ((windChillF - 32) * 5/9).toFixed(1) + '°C';
+  const randomTemp = Math.floor(Math.random() * 30) - 5 
+  const conditions = ["Sunny", "Cloudy", "Rainy", "Snowy"][Math.floor(Math.random() * 4)]
+  const wind = Math.floor(Math.random() * 20)
+  const windchill = randomTemp - wind / 5 
+
+  if (Math.random() < 0.1) {
+    throw new Error("Failed to fetch weather data")
   }
 
   return {
-      temperature: `${tempC}°C`,
-      conditions: 'Sunny',
-      wind: `${windKph} km/h`,
-      windchill: windChillC
-  };
+    temperature: randomTemp + "°C",
+    conditions: conditions,
+    wind: wind + " km/h",
+    windchill: windchill + "°C",
+  }
 }
 
-// Update weather information
 function updateWeather() {
-  const weatherData = getWeatherData();
-  document.getElementById('temperature').textContent = weatherData.temperature;
-  document.getElementById('conditions').textContent = weatherData.conditions;
-  document.getElementById('wind').textContent = weatherData.wind;
-  document.getElementById('windchill').textContent = weatherData.windchill;
+  try {
+    const weatherData = getWeatherData()
+    document.getElementById("temperature").textContent = weatherData.temperature
+    document.getElementById("conditions").textContent = weatherData.conditions
+    document.getElementById("wind").textContent = weatherData.wind
+    document.getElementById("windchill").textContent = weatherData.windchill
+  } catch (error) {
+    console.error("Error updating weather:", error)
+    document.getElementById("temperature").textContent = "Error loading data"
+    document.getElementById("conditions").textContent = "Error loading data"
+    document.getElementById("wind").textContent = "Error loading data"
+    document.getElementById("windchill").textContent = "Error loading data"
+  }
 }
 
-// Update last modified date
-function updateLastModified() {
-  const now = new Date();
-  document.getElementById('lastModified').textContent = now.toLocaleString('en-US', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: false
-  });
-}
+setInterval(updateWeather, 5000)
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  updateWeather();
-  updateLastModified();
-});
