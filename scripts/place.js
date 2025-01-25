@@ -1,13 +1,10 @@
 function calculateWindChill(temperature, windSpeed) {
-  // Convert temperature to Fahrenheit for the calculation
   const tempF = (temperature * 9) / 5 + 32
-  const windSpeedMph = windSpeed * 0.621371 // Convert km/h to mph
+  const windSpeedMph = windSpeed * 0.621371
 
-  // Calculate wind chill using the formula
   const windChill =
     35.74 + 0.6215 * tempF - 35.75 * Math.pow(windSpeedMph, 0.16) + 0.4275 * tempF * Math.pow(windSpeedMph, 0.16)
 
-  // Convert wind chill back to Celsius
   const windChillC = ((windChill - 32) * 5) / 9
 
   return windChillC.toFixed(1)
