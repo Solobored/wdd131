@@ -68,11 +68,9 @@ function getYear(dedicatedDate) {
   if (dedicatedDate === "N/A") {
       return 0;
   }
-  // If it's just a year (like "2027")
   if (!dedicatedDate.includes(",")) {
       return parseInt(dedicatedDate);
   }
-  // If it's a full date (like "1999, June, 9")
   return parseInt(dedicatedDate.split(",")[0]);
 }
 
@@ -101,25 +99,21 @@ function filterTemples(filterType) {
 
   switch(filterType) {
       case 'old':
-          // Temples before 2000
           filteredTemples = temples.filter(temple => {
               const year = getYear(temple.dedicated);
               return year > 0 && year < 2000;
           });
           break;
       case 'new':
-          // Temples in 2000 or after
           filteredTemples = temples.filter(temple => {
               const year = getYear(temple.dedicated);
               return year >= 2000;
           });
           break;
       case 'large':
-          // Temples larger than 25,000 sq ft
           filteredTemples = temples.filter(temple => temple.area > 25000);
           break;
       case 'small':
-          // Temples smaller than 25,000 sq ft (excluding temples with 0 area)
           filteredTemples = temples.filter(temple => temple.area > 0 && temple.area <= 25000);
           break;
       default:
@@ -129,7 +123,6 @@ function filterTemples(filterType) {
   displayTemples(filteredTemples);
 }
 
-// Initialize page and update footer
 document.addEventListener("DOMContentLoaded", () => {
   displayTemples(temples);
   updateFooter();
@@ -141,6 +134,6 @@ function updateFooter() {
   const lastModified = document.lastModified;
   
   footer.innerHTML = `
-      <p>&copy; ${currentYear} | Your Name | Last Modified: ${lastModified}</p>
+      <p>&copy; ${currentYear} | Josue Neiculeo | Last Modified: ${lastModified}</p>
   `;
 }
