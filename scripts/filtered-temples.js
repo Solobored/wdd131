@@ -21,11 +21,11 @@ const temples = [
       imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/concepcion-chile-temple/concepcion-chile-temple-273-main.jpg",
   },
   {
-      templeName: "Oakland Temple",
-      location: "Oakland, California, United States",
-      dedicated: "1964, November, 17",
-      area: 95000,
-      imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/oakland-california-temple/oakland-california-temple-2654-main.jpg",
+      templeName: "Taipen Taiwan",
+      location: "Taipen, Taiwan",
+      dedicated: "1983, November, 18",
+      area: 9945,
+      imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/taipei-taiwan-temple/taipei-taiwan-temple-8296-main.jpg",
   },
   {
       templeName: "Hong Kong Temple",
@@ -35,11 +35,12 @@ const temples = [
       imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/hong-kong-china-temple/hong-kong-china-temple-28125-main.jpg",
   },
   {
-      templeName: "Mesa Arizona Temple",
-      location: "Mesa, Arizona, United States",
-      dedicated: "1927, October, 23",
-      area: 113916,
-      imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/mesa-arizona-temple/mesa-arizona-temple-46561-main.jpg",
+    templeName: "Lima Perú",
+    location: "Lima, Perú",
+    dedicated: "1986, January, 10",
+    area: 9600,
+    imageUrl:
+    "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/lima-peru/400x250/lima-peru-temple-evening-1075606-wallpaper.jpg"
   },
   {
       templeName: "Washington D.C. Temple",
@@ -61,7 +62,55 @@ const temples = [
       dedicated: "2027",
       area: 38670,
       imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/bengaluru-india-temple/bengaluru-india-temple-7886-main.jpg",
-  }
+  },
+  {
+    templeName: "Manti Utah",
+    location: "Manti, Utah, United States",
+    dedicated: "1888, May, 21",
+    area: 74792,
+    imageUrl:
+    "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/manti-utah/400x250/manti-temple-768192-wallpaper.jpg"
+  },
+  {
+    templeName: "Salt Lake City",
+    location: "Salt Lake City, Utah, United States",
+    dedicated: "1893, April, 24",
+    area: 382207,
+    imageUrl:
+    "https://churchofjesuschristtemples.org/assets/img/temples/salt-lake-temple/salt-lake-temple-15669-main.jpg"
+  },
+  {
+    templeName: "Nauvoo",
+    location: "Nauvoo, Illinois, United States",
+    dedicated: "1846, May, 3",
+    area: 50000,
+    imageUrl:
+    "https://churchofjesuschristtemples.org/assets/img/temples/nauvoo-temple/nauvoo-temple-3060-main.jpg"
+  },
+  {
+    templeName: "Kirtland",
+    location: "Kirtland, Ohio, United States",
+    dedicated: "1836, March, 27",
+    area: 15000,
+    imageUrl:
+    "https://churchofjesuschristtemples.org/assets/img/temples/kirtland-temple/kirtland-temple-1275-main.jpg"
+  },
+  {
+    templeName: "Logan Utah",
+    location: "Logan, Utah, United States",
+    dedicated: "1884, May, 19",
+    area: 119619,
+    imageUrl:
+    "https://churchofjesuschristtemples.org/assets/img/temples/logan-utah-temple/logan-utah-temple-40550-main.jpg"
+  },
+  {
+    templeName: "St. George Utah",
+    location: "St. George, Utah, United States",
+    dedicated: "1877, April, 8",
+    area: 143969,
+    imageUrl:
+    "https://churchofjesuschristtemples.org/assets/img/temples/st.-george-utah-temple/st.-george-utah-temple-40435-main.jpg"
+  },
 ];
 
 function getYear(dedicatedDate) {
@@ -101,7 +150,7 @@ function filterTemples(filterType) {
       case 'old':
           filteredTemples = temples.filter(temple => {
               const year = getYear(temple.dedicated);
-              return year > 0 && year < 2000;
+              return year > 0 && year < 1900;
           });
           break;
       case 'new':
@@ -111,10 +160,10 @@ function filterTemples(filterType) {
           });
           break;
       case 'large':
-          filteredTemples = temples.filter(temple => temple.area > 25000);
+          filteredTemples = temples.filter(temple => temple.area > 90000);
           break;
       case 'small':
-          filteredTemples = temples.filter(temple => temple.area > 0 && temple.area <= 25000);
+          filteredTemples = temples.filter(temple => temple.area > 0 && temple.area <= 10000);
           break;
       default:
           filteredTemples = temples;
