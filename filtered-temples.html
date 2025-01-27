@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Filtered Temples Album</title>
-  <meta name="description" content="A collection of temples with details and images, showcasing their significance and architecture.">
-  <meta name="author" content="Your Name">
-  <link rel="stylesheet" href="styles/filtered-temples.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temple Gallery - Explore Sacred Architecture</title>
+    <meta name="description" content="Discover a curated collection of Latter-day Saint temples featuring detailed information about their history, architecture, and significance.">
+    <meta name="author" content="Josue Neiculeo">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/filtered-temples.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><button onclick="filterTemples('home')">Home</button></li>
-        <li><button onclick="filterTemples('old')">Old</button></li>
-        <li><button onclick="filterTemples('new')">New</button></li>
-        <li><button onclick="filterTemples('large')">Large</button></li>
-        <li><button onclick="filterTemples('small')">Small</button></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="filterTemples('home')">Home</a></li>
+                <li><a href="#" onclick="filterTemples('old')">Old Temples</a></li>
+                <li><a href="#" onclick="filterTemples('new')">New Temples</a></li>
+                <li><a href="#" onclick="filterTemples('large')">Large Temples</a></li>
+                <li><a href="#" onclick="filterTemples('small')">Small Temples</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main>
-    <h1>Temple Collection</h1>
-    <div id="temple-container"></div>
-  </main>
+    <main>
+        <h1>Latter-day Saint Temple Gallery</h1>
+        <h2>Explore Sacred Architecture Worldwide</h2>
+        <div id="temple-container"></div>
+    </main>
 
-  <footer>
-    <p>&copy; 2023 | Last Modified: <span id="last-modified"></span></p>
-  </footer>
+    <footer>
+        <p>&copy; 2024 | Josue Neiculeo | Last Modified: <span id="last-modified"></span></p>
+    </footer>
 
-  <script src="scripts/filtered-temples.js" defer></script>
+    <script src="scripts/filtered-temples.js" defer></script>
 </body>
 </html>
