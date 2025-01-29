@@ -136,7 +136,7 @@ function displayTemples(templeList) {
           <p>Location: ${temple.location}</p>
           <p>Dedicated: ${temple.dedicated}</p>
           <p>Area: ${temple.area.toLocaleString()} sq ft</p>
-          <img src="${temple.imageUrl}" alt="${temple.templeName}" loading="lazy">
+          <img src="${temple.imageUrl}" alt="${temple.templeName}" loading="lazy" onerror="this.onerror=null; this.src='placeholder.jpg';">
       `;
 
       container.appendChild(card);

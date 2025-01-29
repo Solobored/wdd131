@@ -1,11 +1,11 @@
 :root {
   --primary-color: #005b96;
-  --secondary-color: #007acc;
+  --secondary-color: #0066cc;
   --background-color: #f0f4f8;
   --card-background-color: white;
   --text-color: #333;
   --link-color: #ffffff;
-  --hover-color: #e0e0e0;
+  --hover-color: #cccccc;
 }
 
 body {
