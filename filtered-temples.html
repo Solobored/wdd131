@@ -6,32 +6,36 @@
     <title>Temple Album - Explore the Sacred Architecture</title>
     <meta name="description" content="Explore a dynamic gallery of Latter-day Saint temples with detailed information about their location, history, and design.">
     <meta name="author" content="Josue Neiculeo">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="temples, Latter-day Saints, architecture, religious buildings">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/filtered-temples.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <header>
-        <nav>
+        <nav aria-label="Temple categories">
             <ul>
-                <li><a href="#" onclick="filterTemples('home')">Home</a></li>
-                <li><a href="#" onclick="filterTemples('old')">Old Temples</a></li>
-                <li><a href="#" onclick="filterTemples('new')">New Temples</a></li>
-                <li><a href="#" onclick="filterTemples('large')">Large Temples</a></li>
-                <li><a href="#" onclick="filterTemples('small')">Small Temples</a></li>
+                <li><a href="#" onclick="filterTemples('home')" aria-label="Show all temples">Home</a></li>
+                <li><a href="#" onclick="filterTemples('old')" aria-label="Show temples built before 1900">Old Temples</a></li>
+                <li><a href="#" onclick="filterTemples('new')" aria-label="Show temples built after 2000">New Temples</a></li>
+                <li><a href="#" onclick="filterTemples('large')" aria-label="Show temples larger than 90,000 square feet">Large Temples</a></li>
+                <li><a href="#" onclick="filterTemples('small')" aria-label="Show temples smaller than 10,000 square feet">Small Temples</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <h1>Latter-day Saint Temples</h1>
-        <h2>Architectural Beauty of Latter-Day Saints Temples</h2>
-        <div id="temple-container"></div>
+    <main id="main-content" role="main">
+        <h1 id="page-title">Latter-day Saint Temples</h1>
+        <h2 id="page-description">Architectural Beauty of Latter-Day Saints Temples</h2>
+        <div id="temple-container" role="region" aria-labelledby="page-title"></div>
     </main>
 
-    <footer>
-        <p>&copy; 2024 | Josue Neiculeo | Last Modified: <span id="last-modified"></span></p>
+    <footer role="contentinfo">
+        <p>&copy; <span id="year"></span> | Josue Neiculeo | Last Modified: <span id="last-modified"></span></p>
     </footer>
 
     <script src="scripts/filtered-temples.js" defer></script>
