@@ -123,33 +123,26 @@ function getYear(dedicatedDate) {
   return parseInt(dedicatedDate.split(",")[0]);
 }
 
+function createTempleCard(temple) {
+  const card = document.createElement('div');
+  card.className = 'temple-card';
+  card.innerHTML = `
+      <img src="${temple.imageUrl}" alt="${temple.templeName}" loading="lazy">
+      <div class="temple-card-content">
+          <h3>${temple.templeName}</h3>
+          <p>Location: ${temple.location}</p>
+          <p>Dedicated: ${temple.dedicated}</p>
+          <p>Area: ${temple.area.toLocaleString()} square feet</p>
+      </div>
+  `;
+  return card;
+}
+
 function displayTemples(templeList) {
   const container = document.getElementById("temple-container");
   container.innerHTML = "";
-
   templeList.forEach((temple) => {
-      const card = document.createElement("div");
-      card.classList.add("temple-card");
-      card.setAttribute("role", "article");
-      card.setAttribute("aria-label", `Information about ${temple.templeName}`);
-
-      const templeId = temple.templeName.toLowerCase().replace(/\s+/g, '-');
-      
-      card.innerHTML = `
-          <h2 id="temple-${templeId}">${temple.templeName}</h2>
-          <p aria-label="Temple location">Location: ${temple.location}</p>
-          <p aria-label="Dedication date">Dedicated: ${temple.dedicated}</p>
-          <p aria-label="Temple area">Area: ${temple.area.toLocaleString()} square feet</p>
-          <img 
-              src="${temple.imageUrl}" 
-              alt="Photograph of ${temple.templeName}" 
-              loading="lazy"
-              onerror="this.onerror=null; this.src='placeholder.jpg';"
-              aria-describedby="temple-${templeId}"
-          >
-      `;
-
-      container.appendChild(card);
+      container.appendChild(createTempleCard(temple));
   });
 }
 
@@ -182,15 +175,22 @@ function filterTemples(filterType) {
   displayTemples(filteredTemples);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  displayTemples(temples);
-  updateFooter();
-});
-
 function updateFooter() {
-  const yearSpan = document.getElementById("year");
-  const lastModifiedSpan = document.getElementById("last-modified");
+  const yearSpan = document.getElementById("currentyear");
+  const lastModifiedSpan = document.getElementById("lastModified");
   
   yearSpan.textContent = new Date().getFullYear();
   lastModifiedSpan.textContent = document.lastModified;
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  displayTemples(temples);
+  updateFooter();
+
+  // Add event listeners for navigation
+  document.getElementById("home-nav").addEventListener("click", () => filterTemples('home'));
+  document.getElementById("old").addEventListener("click", () => filterTemples('old'));
+  document.getElementById("new").addEventListener("click", () => filterTemples('new'));
+  document.getElementById("large").addEventListener("click", () => filterTemples('large'));
+  document.getElementById("small").addEventListener("click", () => filterTemples('small'));
+});
