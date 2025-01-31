@@ -50,13 +50,6 @@ const temples = [
     imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/bangkok-thailand-temple/bangkok-thailand-temple-40037-main.jpg",
 },
 {
-    templeName: "Bengaluru India Temple",
-    location: "Bengaluru, India",
-    dedicated: "2027",
-    area: 38670,
-    imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/bengaluru-india-temple/bengaluru-india-temple-7886-main.jpg",
-},
-{
   templeName: "Manti Utah",
   location: "Manti, Utah, United States",
   dedicated: "1888, May, 21",
@@ -71,14 +64,6 @@ const temples = [
   area: 382207,
   imageUrl:
   "https://churchofjesuschristtemples.org/assets/img/temples/salt-lake-temple/salt-lake-temple-15669-main.jpg"
-},
-{
-  templeName: "Nauvoo",
-  location: "Nauvoo, Illinois, United States",
-  dedicated: "1846, May, 3",
-  area: 50000,
-  imageUrl:
-  "https://churchofjesuschristtemples.org/assets/img/temples/nauvoo-temple/nauvoo-temple-3060-main.jpg"
 },
 ];
 
