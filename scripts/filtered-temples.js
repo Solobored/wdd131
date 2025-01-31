@@ -1,12 +1,5 @@
 const temples = [
   {
-      templeName: "Antofagasta Chile Temple",
-      location: "Antofagasta, Chile",
-      dedicated: "2025",
-      area: 15000,
-      imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/antofagasta-chile-temple/antofagasta-chile-temple-48608-main.jpg",
-  },
-  {
       templeName: "Alaska Temple",
       location: "Anchorage, Alaska, United States",
       dedicated: "1999, June, 9",
@@ -86,30 +79,6 @@ const temples = [
   area: 50000,
   imageUrl:
   "https://churchofjesuschristtemples.org/assets/img/temples/nauvoo-temple/nauvoo-temple-3060-main.jpg"
-},
-{
-  templeName: "Kirtland",
-  location: "Kirtland, Ohio, United States",
-  dedicated: "1836, March, 27",
-  area: 15000,
-  imageUrl:
-  "https://churchofjesuschristtemples.org/assets/img/temples/kirtland-temple/kirtland-temple-1275-main.jpg"
-},
-{
-  templeName: "Logan Utah",
-  location: "Logan, Utah, United States",
-  dedicated: "1884, May, 19",
-  area: 119619,
-  imageUrl:
-  "https://churchofjesuschristtemples.org/assets/img/temples/logan-utah-temple/logan-utah-temple-40550-main.jpg"
-},
-{
-  templeName: "St. George Utah",
-  location: "St. George, Utah, United States",
-  dedicated: "1877, April, 8",
-  area: 143969,
-  imageUrl:
-  "https://churchofjesuschristtemples.org/assets/img/temples/st.-george-utah-temple/st.-george-utah-temple-40435-main.jpg"
 },
 ];
 
