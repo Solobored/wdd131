@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temple Album</title>
-    <meta name="description" content="Explore a dynamic album of Latter-day Saint temples with detailed information about their location, dedication, and size.">
-    <meta name="keywords" content="Temple Album, Latter-day Saint Temples">
+    <meta name="description" content="Explore Latter-day Saint temples from around the world in this comprehensive Temple Album.">
     <meta name="author" content="Josue Neiculeo">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,18 +16,18 @@
         <h1 class="nameHeader">Temple Album</h1>
         <nav class="navigation">
             <ul>
-                <li><a href="#" onclick="filterTemples('home')" aria-label="Show all temples">Home</a></li>
-                <li><a href="#" onclick="filterTemples('old')" aria-label="Show temples built before 1900">Old</a></li>
-                <li><a href="#" onclick="filterTemples('new')" aria-label="Show temples built after 2000">New</a></li>
-                <li><a href="#" onclick="filterTemples('large')" aria-label="Show temples larger than 90,000 square feet">Large</a></li>
-                <li><a href="#" onclick="filterTemples('small')" aria-label="Show temples smaller than 10,000 square feet">Small</a></li>
+                <li><a href="#" id="home-nav">Home</a></li>
+                <li><a href="#" id="old">Old</a></li>
+                <li><a href="#" id="new">New</a></li>
+                <li><a href="#" id="large">Large</a></li>
+                <li><a href="#" id="small">Small</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <h2 id="page-description">Architectural Beauty of Latter-Day Saints Temples</h2>
-        <div id="temple-container" class="container home"></div>
+        <div id="temple-container" class="container"></div>
     </main>
 
     <footer>

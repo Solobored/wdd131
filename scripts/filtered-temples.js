@@ -114,83 +114,63 @@ const temples = [
 ];
 
 function getYear(dedicatedDate) {
-  if (dedicatedDate === "N/A") {
-      return 0;
-  }
-  if (!dedicatedDate.includes(",")) {
-      return parseInt(dedicatedDate);
-  }
-  return parseInt(dedicatedDate.split(",")[0]);
+    if (dedicatedDate === "N/A") return 0;
+    return parseInt(dedicatedDate.split(",")[0]);
 }
 
 function createTempleCard(temple) {
-  const card = document.createElement('div');
-  card.className = 'temple-card';
-  card.innerHTML = `
-      <img src="${temple.imageUrl}" alt="${temple.templeName}" loading="lazy">
-      <div class="temple-card-content">
-          <h3>${temple.templeName}</h3>
-          <p>Location: ${temple.location}</p>
-          <p>Dedicated: ${temple.dedicated}</p>
-          <p>Area: ${temple.area.toLocaleString()} square feet</p>
-      </div>
-  `;
-  return card;
+    const card = document.createElement('div');
+    card.className = 'temple-card';
+    card.innerHTML = `
+        <img src="${temple.imageUrl}" alt="${temple.templeName}" loading="lazy" width="300" height="169">
+        <div class="temple-card-content">
+            <h3>${temple.templeName}</h3>
+            <p>Location: ${temple.location}</p>
+            <p>Dedicated: ${temple.dedicated}</p>
+            <p>Area: ${temple.area.toLocaleString()} square feet</p>
+        </div>
+    `;
+    return card;
 }
 
 function displayTemples(templeList) {
-  const container = document.getElementById("temple-container");
-  container.innerHTML = "";
-  templeList.forEach((temple) => {
-      container.appendChild(createTempleCard(temple));
-  });
+    const container = document.getElementById("temple-container");
+    const fragment = document.createDocumentFragment();
+    templeList.forEach((temple) => {
+        fragment.appendChild(createTempleCard(temple));
+    });
+    container.innerHTML = '';
+    container.appendChild(fragment);
 }
 
 function filterTemples(filterType) {
-  let filteredTemples = [];
-
-  switch(filterType) {
-      case 'old':
-          filteredTemples = temples.filter(temple => {
-              const year = getYear(temple.dedicated);
-              return year > 0 && year < 1900;
-          });
-          break;
-      case 'new':
-          filteredTemples = temples.filter(temple => {
-              const year = getYear(temple.dedicated);
-              return year >= 2000;
-          });
-          break;
-      case 'large':
-          filteredTemples = temples.filter(temple => temple.area > 90000);
-          break;
-      case 'small':
-          filteredTemples = temples.filter(temple => temple.area > 0 && temple.area <= 10000);
-          break;
-      default:
-          filteredTemples = temples;
-  }
-
-  displayTemples(filteredTemples);
+    const filteredTemples = temples.filter(temple => {
+        const year = getYear(temple.dedicated);
+        switch(filterType) {
+            case 'old': return year > 0 && year < 1900;
+            case 'new': return year >= 2000;
+            case 'large': return temple.area > 90000;
+            case 'small': return temple.area > 0 && temple.area <= 10000;
+            default: return true;
+        }
+    });
+    displayTemples(filteredTemples);
 }
 
 function updateFooter() {
-  const yearSpan = document.getElementById("currentyear");
-  const lastModifiedSpan = document.getElementById("lastModified");
-  
-  yearSpan.textContent = new Date().getFullYear();
-  lastModifiedSpan.textContent = document.lastModified;
+    document.getElementById("currentyear").textContent = new Date().getFullYear();
+    document.getElementById("lastModified").textContent = document.lastModified;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  displayTemples(temples);
-  updateFooter();
+    displayTemples(temples);
+    updateFooter();
 
-  // Add event listeners for navigation
-  document.getElementById("home-nav").addEventListener("click", () => filterTemples('home'));
-  document.getElementById("old").addEventListener("click", () => filterTemples('old'));
-  document.getElementById("new").addEventListener("click", () => filterTemples('new'));
-  document.getElementById("large").addEventListener("click", () => filterTemples('large'));
-  document.getElementById("small").addEventListener("click", () => filterTemples('small'));
+    const navItems = ['home-nav', 'old', 'new', 'large', 'small'];
+    navItems.forEach(id => {
+        document.getElementById(id).addEventListener("click", (e) => {
+            e.preventDefault();
+            filterTemples(id === 'home-nav' ? 'home' : id);
+        });
+    });
 });
