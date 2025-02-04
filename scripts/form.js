@@ -49,15 +49,3 @@ document.addEventListener('DOMContentLoaded', () => {
   populateProducts();
   updateLastModified();
 });
-
-// Create review.html JavaScript for localStorage counter
-if (window.location.pathname.includes('review.html')) {
-  let reviewCount = parseInt(localStorage.getItem('reviewCount') || '0');
-  reviewCount++;
-  localStorage.setItem('reviewCount', reviewCount.toString());
-  
-  // Display the count
-  const countDisplay = document.createElement('p');
-  countDisplay.textContent = `Total Reviews Submitted: ${reviewCount}`;
-  document.body.appendChild(countDisplay);
-}
