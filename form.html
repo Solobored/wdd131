@@ -4,71 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="description" content="Submit your product review and share your experience with our products. Rate features, installation date, and provide detailed feedback.">
-    <meta name="author" content="Your Name Here">
+    <meta name="author" content="Josue Neiculeo">
     <title>Product Review Form - Share Your Experience</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/form.css">
 </head>
 <body>
     <main>
         <h1>Product Review</h1>
-        <form method="get" action="review.html">
+        <form id="reviewForm" method="get" action="#" novalidate>
             <div class="form-group">
-                <label for="product">Product Name<span class="required">*</span></label>
-                <select id="product" name="product" required>
+                <label for="product">Product Name<span class="required" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+                <select id="product" name="product" required aria-required="true">
                     <option value="" disabled selected>Select a Product...</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>Overall Rating<span class="required">*</span></label>
-                <div class="rating">
-                    <input type="radio" id="star5" name="rating" value="5" required>
-                    <label for="star5" title="5 stars">★★★★★</label>
-                    <input type="radio" id="star4" name="rating" value="4">
-                    <label for="star4" title="4 stars">★★★★</label>
-                    <input type="radio" id="star3" name="rating" value="3">
-                    <label for="star3" title="3 stars">★★★</label>
+    <fieldset class="rating-group">
+        <legend>Overall Rating<span class="required" aria-hidden="true">*</span><span class="sr-only">(required)</span></legend>
+        <div class="rating" role="radiogroup" aria-required="true">
+            <div class="stars-display" aria-hidden="true">★★★★★</div>
+            <div class="rating-options">
+                <div class="rating-option">
+                    <input type="radio" id="star1" name="rating" value="1" required>
+                    <label for="star1">
+                        <span class="sr-only">1 star rating</span>
+                    </label>
+                </div>
+                <div class="rating-option">
                     <input type="radio" id="star2" name="rating" value="2">
-                    <label for="star2" title="2 stars">★★</label>
-                    <input type="radio" id="star1" name="rating" value="1">
-                    <label for="star1" title="1 star">★</label>
+                    <label for="star2">
+                        <span class="sr-only">2 star rating</span>
+                    </label>
                 </div>
+                <div class="rating-option">
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3">
+                        <span class="sr-only">3 star rating</span>
+                    </label>
+                </div>
+                <div class="rating-option">
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4">
+                        <span class="sr-only">4 star rating</span>
+                    </label>
+                </div>
+                <div class="rating-option">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5">
+                        <span class="sr-only">5 star rating</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+            <div class="form-group">
+                <label for="install-date">Date of Installation<span class="required" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+                <input type="date" id="install-date" name="install-date" required aria-required="true">
             </div>
 
             <div class="form-group">
-                <label for="install-date">Date of Installation<span class="required">*</span></label>
-                <input type="date" id="install-date" name="install-date" required>
-            </div>
-
-            <div class="form-group">
-                <label>Which features did you find useful in the product?</label>
-                <p class="subtitle">(Check all that apply)</p>
-                <div class="checkbox-group">
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="durability" name="features" value="durability">
-                        <label for="durability">Durability</label>
+                <fieldset>
+                    <legend>Which features did you find useful in the product?</legend>
+                    <p class="subtitle" id="features-hint">(Check all that apply)</p>
+                    <div class="checkbox-group" aria-describedby="features-hint">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="durability" name="features" value="durability">
+                            <label for="durability">Durability</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="ease" name="features" value="ease">
+                            <label for="ease">Ease of Use</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="performance" name="features" value="performance">
+                            <label for="performance">Performance</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="design" name="features" value="design">
+                            <label for="design">Design</label>
+                        </div>
                     </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="ease" name="features" value="ease">
-                        <label for="ease">Ease of Use</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="performance" name="features" value="performance">
-                        <label for="performance">Performance</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="design" name="features" value="design">
-                        <label for="design">Design</label>
-                    </div>
-                </div>
+                </fieldset>
             </div>
 
             <div class="form-group">
                 <label for="review">Written Review <span class="optional">(Optional)</span></label>
-                <textarea id="review" name="review" rows="5"></textarea>
+                <textarea id="review" name="review" rows="5" aria-describedby="review-hint"></textarea>
+                <span id="review-hint" class="hint-text">Share your experience with the product</span>
             </div>
 
             <div class="form-group">
@@ -78,12 +106,19 @@
 
             <button type="submit" class="submit-btn">Post Review</button>
         </form>
+
+        <div id="confirmationMessage" class="confirmation" style="display: none;">
+            <h2>Thank You!</h2>
+            <p>Your review has been submitted successfully.</p>
+            <p>Total reviews submitted: <span id="reviewCount">0</span></p>
+            <button id="newReviewBtn" class="submit-btn">Submit Another Review</button>
+        </div>
     </main>
     <footer>
-        <p>©2024 🌺 Rubia Magdelena Francesco 🌺</p>
-        <p>Madagascar</p>
+        <p>&copy;2024 Josue Neiculeo | Chile</p>
         <p>Last Modification: <span id="lastModified"></span></p>
     </footer>
     <script src="scripts/form.js" defer></script>
 </body>
 </html>
+

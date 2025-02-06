@@ -1,8 +1,12 @@
 :root {
-  --primary-color: #2c0a2f;
-  --secondary-color: #e6e6e6;
-  --text-color: #333;
-  --error-color: #d32f2f;
+  --primary-color: #4a154b;
+  --secondary-color: #f3f0f4;
+  --text-color: #2d2d2d;
+  --error-color: #c41e3a;
+  --border-color: #6b7280;
+  --focus-color: #2563eb;
+  --star-color: #4a154b;
+  --star-bg: #e9e3ea;
   --border-radius: 4px;
 }
 
@@ -13,7 +17,7 @@
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.6;
   color: var(--text-color);
   background-color: #fff;
@@ -22,46 +26,52 @@ body {
 
 main {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 2rem auto;
   background-color: var(--secondary-color);
   padding: 2rem;
   border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+h1,
+h2 {
   color: #fff;
   background-color: var(--primary-color);
-  padding: 1rem;
+  padding: 1.5rem;
   margin: -2rem -2rem 2rem -2rem;
   text-align: center;
   border-radius: 8px 8px 0 0;
+  font-size: 1.75rem;
 }
 
 .form-group {
   margin-bottom: 1.5rem;
 }
 
-label {
+label,
+legend {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
+  color: var(--text-color);
 }
 
 .required {
   color: var(--error-color);
   margin-left: 0.25rem;
+  font-weight: bold;
 }
 
 .optional {
   color: #666;
-  font-weight: normal;
+  font-weight: 500;
 }
 
 .subtitle {
   font-size: 0.9rem;
   color: #666;
-  margin-top: -0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
 }
 
 select,
@@ -70,48 +80,102 @@ input[type="text"],
 textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #ccc;
+  border: 2px solid var(--border-color);
   border-radius: var(--border-radius);
   background-color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+select:focus,
+input[type="date"]:focus,
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--focus-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.rating-group {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
 }
 
 .rating {
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
-.rating input {
-  display: none;
+.stars-display {
+  font-size: 2rem;
+  color: var(--star-color);
+}
+
+.rating-options {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.rating-option {
+  position: relative;
+}
+
+.rating input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
 }
 
 .rating label {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--star-bg);
   cursor: pointer;
-  font-size: 1.5rem;
-  color: #ddd;
-  padding: 0 0.2rem;
+  transition: background-color 0.2s;
 }
 
-.rating input:checked ~ label,
-.rating label:hover,
-.rating label:hover ~ label {
-  color: #ffd700;
+.rating input[type="radio"]:checked + label {
+  background-color: var(--star-color);
+}
+
+.rating input[type="radio"]:focus + label {
+  box-shadow: 0 0 0 3px rgba(74, 21, 75, 0.3);
+}
+
+.rating label:hover {
+  background-color: var(--star-color);
 }
 
 .checkbox-group {
   display: grid;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .checkbox-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .checkbox-item input[type="checkbox"] {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.checkbox-item input[type="checkbox"]:focus {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
 }
 
 .submit-btn {
@@ -122,41 +186,48 @@ textarea {
   border: none;
   border-radius: var(--border-radius);
   font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.2s;
 }
 
-.submit-btn:hover {
-  background-color: #3c1442;
+.submit-btn:hover,
+.submit-btn:focus {
+  background-color: #3a1139;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 
-/* Add these new styles for the review confirmation page */
-.confirmation {
-  text-align: center;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  align-items: center;
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
-.confirmation p {
-  font-size: 1.2rem;
-  color: var(--text-color);
+.hint-text {
+  font-size: 0.875rem;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
   margin: 0;
 }
 
-#reviewCount {
-  font-weight: 600;
-  color: var(--primary-color);
+.confirmation {
+  text-align: center;
 }
 
-.confirmation .submit-btn {
-  display: inline-block;
-  text-decoration: none;
-  max-width: 250px;
-  margin-top: 1rem;
-  text-align: center;
+.confirmation p {
+  margin-bottom: 1rem;
 }
 
 footer {
@@ -166,21 +237,39 @@ footer {
   background-color: var(--primary-color);
   color: white;
   border-radius: var(--border-radius);
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
 }
 
 footer p {
-  margin: 0;
+  margin: 0.5rem 0;
 }
 
 @media (min-width: 768px) {
   body {
-      padding: 2rem;
+    padding: 2rem;
   }
 
   .checkbox-group {
-      grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rating {
+    justify-content: flex-start;
   }
 }
+
+@media (forced-colors: active) {
+  .rating-stars {
+    border: 1px solid currentColor;
+  }
+
+  .submit-btn {
+    border: 1px solid currentColor;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
