@@ -120,7 +120,16 @@ function setupFormValidation() {
 function submitForm() {
   const reviewCount = Number.parseInt(localStorage.getItem("reviewCount") || "0") + 1
   localStorage.setItem("reviewCount", reviewCount.toString())
-  window.location.href = "review.html"
+  document.getElementById("reviewForm").classList.add("hidden")
+  const confirmationMessage = document.getElementById("confirmationMessage")
+  confirmationMessage.classList.remove("hidden")
+  document.getElementById("reviewCount").textContent = reviewCount
+}
+
+function resetForm() {
+  document.getElementById("reviewForm").reset()
+  document.getElementById("reviewForm").classList.remove("hidden")
+  document.getElementById("confirmationMessage").classList.add("hidden")
 }
 
 function initializeReviewCount() {
@@ -135,5 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeRatingSystem()
   setupFormValidation()
   initializeReviewCount()
+
+  document.getElementById("newReviewBtn").addEventListener("click", resetForm)
 })
 
