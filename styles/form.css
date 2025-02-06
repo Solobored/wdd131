@@ -157,6 +157,7 @@ textarea:focus {
 .checkbox-group {
   display: grid;
   gap: 1rem;
+  grid-template-columns: 1fr;
 }
 
 .checkbox-item {
@@ -256,7 +257,7 @@ footer p {
   }
 
   .checkbox-group {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 
   .rating {
