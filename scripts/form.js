@@ -47,7 +47,6 @@ function initializeRatingSystem() {
   const ratingInputs = document.querySelectorAll('.rating input[type="radio"]')
   const starsDisplay = document.querySelector(".stars-display")
 
-  // Keyboard navigation
   ratingContainer.addEventListener("keydown", (e) => {
     const currentInput = document.activeElement
     if (!currentInput.matches('.rating input[type="radio"]')) return
@@ -74,14 +73,12 @@ function initializeRatingSystem() {
     updateRatingDisplay(newIndex + 1)
   })
 
-  // Mouse interaction
   ratingInputs.forEach((input, index) => {
     input.addEventListener("change", () => {
       updateRatingDisplay(index + 1)
     })
   })
 
-  // Initialize display
   updateRatingDisplay(0)
 }
 
