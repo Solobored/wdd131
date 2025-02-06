@@ -1,17 +1,17 @@
 function updateReviewCount() {
-  const reviewCount = localStorage.getItem("reviewCount") || "0"
-  const countElement = document.getElementById("reviewCount")
-  countElement.textContent = `Total Reviews Submitted: ${reviewCount}`
+  const reviewCount = localStorage.getItem("reviewCount") || "0";
+  const countElement = document.getElementById("reviewCount");
+
+  if (countElement) {
+      countElement.textContent = `Total Reviews Submitted: ${reviewCount}`;
+  }
 }
 
 function updateLastModified() {
-  const lastModified = document.getElementById("lastModified")
-  const now = new Date()
-  lastModified.textContent = now.toLocaleString()
+  document.getElementById("lastModified").textContent = document.lastModified;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  updateReviewCount()
-  updateLastModified()
-})
-
+  updateReviewCount();
+  updateLastModified();
+});

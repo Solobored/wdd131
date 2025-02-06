@@ -118,13 +118,11 @@ function setupFormValidation() {
 }
 
 function submitForm() {
-  const reviewCount = Number.parseInt(localStorage.getItem("reviewCount") || "0") + 1
-  localStorage.setItem("reviewCount", reviewCount.toString())
-  document.getElementById("reviewForm").classList.add("hidden")
-  const confirmationMessage = document.getElementById("confirmationMessage")
-  confirmationMessage.classList.remove("hidden")
-  document.getElementById("reviewCount").textContent = reviewCount
+  const reviewCount = Number.parseInt(localStorage.getItem("reviewCount") || "0") + 1;
+  localStorage.setItem("reviewCount", reviewCount.toString());
+  window.location.href = "review.html";
 }
+
 
 function resetForm() {
   document.getElementById("reviewForm").reset()
