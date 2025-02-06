@@ -23,45 +23,35 @@
             </div>
 
             <div class="form-group">
-    <fieldset class="rating-group">
-        <legend>Overall Rating<span class="required" aria-hidden="true">*</span><span class="sr-only">(required)</span></legend>
-        <div class="rating" role="radiogroup" aria-required="true">
-            <div class="stars-display" aria-hidden="true">★★★★★</div>
-            <div class="rating-options">
-                <div class="rating-option">
-                    <input type="radio" id="star1" name="rating" value="1" required>
-                    <label for="star1">
-                        <span class="sr-only">1 star rating</span>
-                    </label>
-                </div>
-                <div class="rating-option">
-                    <input type="radio" id="star2" name="rating" value="2">
-                    <label for="star2">
-                        <span class="sr-only">2 star rating</span>
-                    </label>
-                </div>
-                <div class="rating-option">
-                    <input type="radio" id="star3" name="rating" value="3">
-                    <label for="star3">
-                        <span class="sr-only">3 star rating</span>
-                    </label>
-                </div>
-                <div class="rating-option">
-                    <input type="radio" id="star4" name="rating" value="4">
-                    <label for="star4">
-                        <span class="sr-only">4 star rating</span>
-                    </label>
-                </div>
-                <div class="rating-option">
-                    <input type="radio" id="star5" name="rating" value="5">
-                    <label for="star5">
-                        <span class="sr-only">5 star rating</span>
-                    </label>
-                </div>
+                <fieldset class="rating-group">
+                    <legend>Overall Rating<span class="required" aria-hidden="true">*</span><span class="sr-only">(required)</span></legend>
+                    <div class="rating" role="radiogroup" aria-required="true">
+                        <div class="stars-display" aria-hidden="true">★★★★★</div>
+                        <div class="rating-options">
+                            <div class="rating-option">
+                                <input type="radio" id="star1" name="rating" value="1" required>
+                                <label for="star1"><span class="sr-only">1 star rating</span></label>
+                            </div>
+                            <div class="rating-option">
+                                <input type="radio" id="star2" name="rating" value="2">
+                                <label for="star2"><span class="sr-only">2 star rating</span></label>
+                            </div>
+                            <div class="rating-option">
+                                <input type="radio" id="star3" name="rating" value="3">
+                                <label for="star3"><span class="sr-only">3 star rating</span></label>
+                            </div>
+                            <div class="rating-option">
+                                <input type="radio" id="star4" name="rating" value="4">
+                                <label for="star4"><span class="sr-only">4 star rating</span></label>
+                            </div>
+                            <div class="rating-option">
+                                <input type="radio" id="star5" name="rating" value="5">
+                                <label for="star5"><span class="sr-only">5 star rating</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
             </div>
-        </div>
-    </fieldset>
-</div>
 
             <div class="form-group">
                 <label for="install-date">Date of Installation<span class="required" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
@@ -71,8 +61,8 @@
             <div class="form-group">
                 <fieldset>
                     <legend>Which features did you find useful in the product?</legend>
-                    <p class="subtitle" id="features-hint">(Check all that apply)</p>
-                    <div class="checkbox-group" aria-describedby="features-hint">
+                    <p class="subtitle">(Check all that apply)</p>
+                    <div class="checkbox-group">
                         <div class="checkbox-item">
                             <input type="checkbox" id="durability" name="features" value="durability">
                             <label for="durability">Durability</label>
@@ -95,8 +85,7 @@
 
             <div class="form-group">
                 <label for="review">Written Review <span class="optional">(Optional)</span></label>
-                <textarea id="review" name="review" rows="5" aria-describedby="review-hint"></textarea>
-                <span id="review-hint" class="hint-text">Share your experience with the product</span>
+                <textarea id="review" name="review" rows="5"></textarea>
             </div>
 
             <div class="form-group">
@@ -106,13 +95,6 @@
 
             <button type="submit" class="submit-btn">Post Review</button>
         </form>
-
-        <div id="confirmationMessage" class="confirmation" style="display: none;">
-            <h2>Thank You!</h2>
-            <p>Your review has been submitted successfully.</p>
-            <p>Total reviews submitted: <span id="reviewCount">0</span></p>
-            <button id="newReviewBtn" class="submit-btn">Submit Another Review</button>
-        </div>
     </main>
     <footer>
         <p>&copy;2024 Josue Neiculeo | Chile</p>
@@ -121,4 +103,3 @@
     <script src="scripts/form.js" defer></script>
 </body>
 </html>
-
