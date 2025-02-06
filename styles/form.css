@@ -189,6 +189,9 @@ textarea:focus {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
 }
 
 .submit-btn:hover,
@@ -228,6 +231,10 @@ fieldset {
 
 .confirmation p {
   margin-bottom: 1rem;
+}
+
+.hidden {
+  display: none;
 }
 
 footer {
