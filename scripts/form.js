@@ -143,34 +143,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("reviewForm");
 
   if (form) {
-      form.addEventListener("submit", (event) => {
-          event.preventDefault(); 
-
+      form.addEventListener("submit", () => {
           let reviewCount = Number.parseInt(localStorage.getItem("reviewCount") || "0") + 1;
           localStorage.setItem("reviewCount", reviewCount.toString());
+      });
+  }
 
-          window.location.href = "review.html";
+  const productSelect = document.getElementById("product");
+  const products = ["Warp Equalizer", "Low Voltage Reactor", "Time Circuits", "Power Lace", "Flux Capacitor"];
+
+  if (productSelect) {
+      products.forEach(product => {
+          const option = document.createElement("option");
+          option.value = product.toLowerCase().replace(/\s+/g, "-");
+          option.textContent = product;
+          productSelect.appendChild(option);
       });
   }
 });
-
-document.addEventListener("DOMContentLoaded", () => {
-  const productSelect = document.getElementById("product");
-
-  const products = [
-      "Warp Equalizer",
-      "Low Voltage Reactor",
-      "Time Circuits",
-      "Power Lace",
-      "Flux Capacitor"
-  ];
-
-  products.forEach(product => {
-      const option = document.createElement("option");
-      option.value = product.toLowerCase().replace(/\s+/g, "-");
-      option.textContent = product;
-      productSelect.appendChild(option);
-  });
-});
-
-
