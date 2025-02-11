@@ -24,140 +24,106 @@ const products = [
     name: "warp equalizer",
     averagerating: 5.0,
   },
-]
+];
+
+document.addEventListener("DOMContentLoaded", () => {
+  populateProducts();
+  updateLastModified();
+  setupFormValidation();
+  initializeReviewCount();
+});
 
 function populateProducts() {
-  const selectElement = document.getElementById("product")
+  const selectElement = document.getElementById("product");
+  if (!selectElement) return;
+  
   products.forEach((product) => {
-    const option = document.createElement("option")
-    option.value = product.id
-    option.textContent = product.name.charAt(0).toUpperCase() + product.name.slice(1)
-    selectElement.appendChild(option)
-  })
+    const option = document.createElement("option");
+    option.value = product.id;
+    option.textContent = product.name.charAt(0).toUpperCase() + product.name.slice(1);
+    selectElement.appendChild(option);
+  });
 }
 
 function updateLastModified() {
-  const lastModified = document.getElementById("lastModified")
-  const now = new Date()
-  lastModified.textContent = now.toLocaleString()
-}
-
-function initializeRatingSystem() {
-  const ratingContainer = document.querySelector(".rating")
-  const ratingInputs = document.querySelectorAll('.rating input[type="radio"]')
-  const starsDisplay = document.querySelector(".stars-display")
-
-  ratingContainer.addEventListener("keydown", (e) => {
-    const currentInput = document.activeElement
-    if (!currentInput.matches('.rating input[type="radio"]')) return
-
-    const currentIndex = Array.from(ratingInputs).indexOf(currentInput)
-    let newIndex
-
-    switch (e.key) {
-      case "ArrowRight":
-      case "ArrowUp":
-        newIndex = Math.min(currentIndex + 1, ratingInputs.length - 1)
-        break
-      case "ArrowLeft":
-      case "ArrowDown":
-        newIndex = Math.max(currentIndex - 1, 0)
-        break
-      default:
-        return
-    }
-
-    e.preventDefault()
-    ratingInputs[newIndex].focus()
-    ratingInputs[newIndex].checked = true
-    updateRatingDisplay(newIndex + 1)
-  })
-
-  ratingInputs.forEach((input, index) => {
-    input.addEventListener("change", () => {
-      updateRatingDisplay(index + 1)
-    })
-  })
-
-  updateRatingDisplay(0)
-}
-
-function updateRatingDisplay(selectedRating) {
-  const starsDisplay = document.querySelector(".stars-display")
-  const fullStars = "★".repeat(selectedRating)
-  const emptyStars = "☆".repeat(5 - selectedRating)
-  starsDisplay.textContent = fullStars + emptyStars
+  const lastModified = document.getElementById("lastModified");
+  if (lastModified) {
+    const now = new Date(document.lastModified).toLocaleString();
+    lastModified.textContent = `Last modified: ${now}`;
+  }
 }
 
 function setupFormValidation() {
-  const form = document.querySelector("form")
-  const requiredFields = form.querySelectorAll("[required]")
+  const form = document.getElementById("reviewForm");
+  if (!form) return;
 
   form.addEventListener("submit", (event) => {
-    event.preventDefault()
-    let isValid = true
-    let firstInvalid = null
+    event.preventDefault(); // Prevent default behavior
 
-    requiredFields.forEach((field) => {
-      if (!field.value) {
-        isValid = false
-        field.setAttribute("aria-invalid", "true")
-        if (!firstInvalid) firstInvalid = field
+    let isValid = true;
+    let firstInvalid = null;
+
+    form.querySelectorAll("[required]").forEach((field) => {
+      const errorMessage = field.nextElementSibling;
+
+      if (!field.value.trim()) {
+        isValid = false;
+        field.classList.add("error");
+        field.setAttribute("aria-invalid", "true");
+
+        if (!errorMessage || !errorMessage.classList.contains("error-message")) {
+          const error = document.createElement("div");
+          error.classList.add("error-message");
+          error.textContent = `* This field is required`;
+          field.after(error);
+        }
+
+        if (!firstInvalid) firstInvalid = field;
       } else {
-        field.setAttribute("aria-invalid", "false")
+        field.classList.remove("error");
+        field.setAttribute("aria-invalid", "false");
+
+        if (errorMessage && errorMessage.classList.contains("error-message")) {
+          errorMessage.remove();
+        }
       }
-    })
+    });
 
     if (!isValid) {
-      firstInvalid.focus()
-      alert("Please fill out all required fields marked with an asterisk (*)")
-    } else {
-      submitForm()
+      firstInvalid.focus();
+      return; // Stop submission
     }
-  })
+
+    submitForm();
+  });
 }
 
 function submitForm() {
-  const reviewCount = Number.parseInt(localStorage.getItem("reviewCount") || "0") + 1
-  localStorage.setItem("reviewCount", reviewCount.toString())
-  document.getElementById("reviewForm").classList.add("hidden")
-  const confirmationMessage = document.getElementById("confirmationMessage")
-  confirmationMessage.classList.remove("hidden")
+  const reviewCount = Number.parseInt(localStorage.getItem("reviewCount") || "0") + 1;
+  localStorage.setItem("reviewCount", reviewCount.toString());
+
+  // Save review data (optional)
+  const formData = new FormData(document.getElementById("reviewForm"));
+  const reviewData = {};
+  formData.forEach((value, key) => {
+    reviewData[key] = value;
+  });
+
+  localStorage.setItem("latestReview", JSON.stringify(reviewData));
+
+  // Redirect to review.html
   window.location.href = "review.html";
 }
 
-
 function resetForm() {
-  document.getElementById("reviewForm").reset()
-  document.getElementById("reviewForm").classList.remove("hidden")
-  document.getElementById("confirmationMessage").classList.add("hidden")
+  document.getElementById("reviewForm").reset();
+  localStorage.setItem("reviewCount", "0"); 
+  document.getElementById("reviewForm").classList.remove("hidden");
+  document.getElementById("confirmationMessage").classList.add("hidden");
 }
 
 function initializeReviewCount() {
   if (!localStorage.getItem("reviewCount")) {
-    localStorage.setItem("reviewCount", "0")
+    localStorage.setItem("reviewCount", "0");
   }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("reviewForm");
-
-  if (form) {
-      form.addEventListener("submit", () => {
-          let reviewCount = Number.parseInt(localStorage.getItem("reviewCount") || "0") + 1;
-          localStorage.setItem("reviewCount", reviewCount.toString());
-      });
-  }
-
-  const productSelect = document.getElementById("product");
-  const products = ["Warp Equalizer", "Low Voltage Reactor", "Time Circuits", "Power Lace", "Flux Capacitor"];
-
-  if (productSelect) {
-      products.forEach(product => {
-          const option = document.createElement("option");
-          option.value = product.toLowerCase().replace(/\s+/g, "-");
-          option.textContent = product;
-          productSelect.appendChild(option);
-      });
-  }
-});
