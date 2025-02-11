@@ -58,7 +58,7 @@ function setupFormValidation() {
   if (!form) return;
 
   form.addEventListener("submit", (event) => {
-    event.preventDefault(); // Prevent default behavior
+    event.preventDefault(); 
 
     let isValid = true;
     let firstInvalid = null;
@@ -91,7 +91,7 @@ function setupFormValidation() {
 
     if (!isValid) {
       firstInvalid.focus();
-      return; // Stop submission
+      return; 
     }
 
     submitForm();
@@ -102,7 +102,7 @@ function submitForm() {
   const reviewCount = Number.parseInt(localStorage.getItem("reviewCount") || "0") + 1;
   localStorage.setItem("reviewCount", reviewCount.toString());
 
-  // Save review data (optional)
+ 
   const formData = new FormData(document.getElementById("reviewForm"));
   const reviewData = {};
   formData.forEach((value, key) => {
@@ -111,7 +111,6 @@ function submitForm() {
 
   localStorage.setItem("latestReview", JSON.stringify(reviewData));
 
-  // Redirect to review.html
   window.location.href = "review.html";
 }
 
