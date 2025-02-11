@@ -118,8 +118,11 @@ function setupFormValidation() {
 }
 
 function submitForm() {
-  const reviewCount = Number.parseInt(localStorage.getItem("reviewCount") || "0") + 1;
-  localStorage.setItem("reviewCount", reviewCount.toString());
+  const reviewCount = Number.parseInt(localStorage.getItem("reviewCount") || "0") + 1
+  localStorage.setItem("reviewCount", reviewCount.toString())
+  document.getElementById("reviewForm").classList.add("hidden")
+  const confirmationMessage = document.getElementById("confirmationMessage")
+  confirmationMessage.classList.remove("hidden")
   window.location.href = "review.html";
 }
 
@@ -137,12 +140,37 @@ function initializeReviewCount() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  populateProducts()
-  updateLastModified()
-  initializeRatingSystem()
-  setupFormValidation()
-  initializeReviewCount()
+  const form = document.getElementById("reviewForm");
 
-  document.getElementById("newReviewBtn").addEventListener("click", resetForm)
-})
+  if (form) {
+      form.addEventListener("submit", (event) => {
+          event.preventDefault(); 
+
+          let reviewCount = Number.parseInt(localStorage.getItem("reviewCount") || "0") + 1;
+          localStorage.setItem("reviewCount", reviewCount.toString());
+
+          window.location.href = "review.html";
+      });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const productSelect = document.getElementById("product");
+
+  const products = [
+      "Warp Equalizer",
+      "Low Voltage Reactor",
+      "Time Circuits",
+      "Power Lace",
+      "Flux Capacitor"
+  ];
+
+  products.forEach(product => {
+      const option = document.createElement("option");
+      option.value = product.toLowerCase().replace(/\s+/g, "-");
+      option.textContent = product;
+      productSelect.appendChild(option);
+  });
+});
+
 
